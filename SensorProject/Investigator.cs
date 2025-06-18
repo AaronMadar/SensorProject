@@ -34,13 +34,13 @@ namespace SensorProject
 
             if (soldier.Weaknesses.Contains(sensor))
             {
-                Console.WriteLine($"Success: The sensor \"{sensor}\" has revealed a weakness!");
                 soldier.count++;
-                soldier.ConfirmAgentPresence();
+                Console.WriteLine($"Success: The sensor \"{sensor}\" has revealed a weakness! {soldier.count}/{soldier.numOfWeakness} ");
+                soldier.RevealAgent();
             }
             else
             {
-                Console.WriteLine($"Failure: The sensor \"{sensor}\" did not match any weakness.");
+                Console.WriteLine($"Failure: The sensor \"{sensor}\" did not match any weakness.  {soldier.count}/{soldier.numOfWeakness}");
             }
         }
 

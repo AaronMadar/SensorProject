@@ -12,17 +12,19 @@ namespace SensorProject
         public List<string> Weaknesses;
         public List<string> ImplantedSensors;
         public int count = 0;
+        public int numOfWeakness;
 
         public IranianAgent()
         {
             Weaknesses = new List<string>();
             ImplantedSensors = new List<string>();
+
             InitializeWeaknesses();  // Appelle une méthode pour remplir les faiblesses
         }
 
         protected abstract void InitializeWeaknesses();
 
-        public abstract void ConfirmAgentPresence();
+        public abstract void RevealAgent();
     }
 
 
@@ -34,6 +36,7 @@ namespace SensorProject
     {
         protected override void InitializeWeaknesses()
         {
+            numOfWeakness = 2;
             Random rnd = new Random();
             List<string> copySensor = new List<string>(Investigator.Sensor);
 
@@ -46,11 +49,11 @@ namespace SensorProject
             }
         }
 
-        public override void ConfirmAgentPresence()
+        public override void RevealAgent()
         {
             if (count == 2)
             {
-                Console.WriteLine("The agent has been successfully detected at the specified location.");
+                Console.WriteLine("The agent has been successfully unmasked !");
 
             }
         }
@@ -67,6 +70,7 @@ namespace SensorProject
         // Chef d’escouade
         protected override void InitializeWeaknesses()
         {
+            numOfWeakness = 4;
             Random rnd = new Random();
             List<string> copySensor = new List<string>(Investigator.Sensor);
 
@@ -78,11 +82,11 @@ namespace SensorProject
             }
         }
 
-        public override void ConfirmAgentPresence()
+        public override void RevealAgent()
         {
             if (count == 4)
             {
-                Console.WriteLine("The agent has been successfully detected at the specified location.");
+                Console.WriteLine("The agent has been successfully unmasked !");
 
             }
         }
@@ -98,6 +102,7 @@ namespace SensorProject
         // Commandant senior
         protected override void InitializeWeaknesses()
         {
+            numOfWeakness = 6;
             Random rnd = new Random();
             List<string> copySensor = new List<string>(Investigator.Sensor);
 
@@ -109,11 +114,11 @@ namespace SensorProject
             }
         }
 
-        public override void ConfirmAgentPresence()
+        public override void RevealAgent()
         {
             if (count == 6)
             {
-                Console.WriteLine("The agent has been successfully detected at the specified location.");
+                Console.WriteLine("The agent has been successfully unmasked !");
 
             }
         }
@@ -131,6 +136,7 @@ namespace SensorProject
         // Leader d’organisation (haut gradé)
         protected override void InitializeWeaknesses()
         {
+            numOfWeakness = 8;
             Random rnd = new Random();
             List<string> copySensor = new List<string>(Investigator.Sensor);
 
@@ -141,12 +147,11 @@ namespace SensorProject
                 copySensor.RemoveAt(index);
             }
         }
-
-        public override void ConfirmAgentPresence()
+        public override void RevealAgent()
         {
             if (count == 8)
             {
-                Console.WriteLine("The agent has been successfully detected at the specified location.");
+                Console.WriteLine("The agent has been successfully unmasked !");
 
             }
         }
