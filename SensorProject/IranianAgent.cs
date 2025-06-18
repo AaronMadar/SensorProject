@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace SensorProject
 {
-    abstract class IranianAgent
+    abstract public class IranianAgent
     {
-        protected List<string> Weaknesses;
-        protected List<string> ImplantedSensors;
+        public List<string> Weaknesses;
+        public List<string> ImplantedSensors;
+        public int count = 0;
 
         public IranianAgent()
         {
@@ -20,14 +21,21 @@ namespace SensorProject
         }
 
         protected abstract void InitializeWeaknesses();
+
+        public abstract void ConfirmAgentPresence();
     }
+
+
+
+
+
 
     class FootSoldier : IranianAgent
     {
         protected override void InitializeWeaknesses()
         {
             Random rnd = new Random();
-            List<string> copySensor = new List<string>(AllSensor.Sensor);
+            List<string> copySensor = new List<string>(Investigator.Sensor);
 
             for (int i = 0; i < 2; i++)  // toujours 2 capteurs
             {
@@ -38,7 +46,21 @@ namespace SensorProject
             }
         }
 
+        public override void ConfirmAgentPresence()
+        {
+            if (count == 2)
+            {
+                Console.WriteLine("The agent has been successfully detected at the specified location.");
+
+            }
+        }
+
     }
+
+
+
+
+
 
     class SquadLeader : IranianAgent
     {
@@ -46,13 +68,22 @@ namespace SensorProject
         protected override void InitializeWeaknesses()
         {
             Random rnd = new Random();
-            List<string> copySensor = new List<string>(AllSensor.Sensor);
+            List<string> copySensor = new List<string>(Investigator.Sensor);
 
             for (int i = 0; i < 4; i++)  
             {
                 int index = rnd.Next(copySensor.Count);
                 Weaknesses.Add(copySensor[index]);
                 copySensor.RemoveAt(index);
+            }
+        }
+
+        public override void ConfirmAgentPresence()
+        {
+            if (count == 4)
+            {
+                Console.WriteLine("The agent has been successfully detected at the specified location.");
+
             }
         }
 
@@ -68,7 +99,7 @@ namespace SensorProject
         protected override void InitializeWeaknesses()
         {
             Random rnd = new Random();
-            List<string> copySensor = new List<string>(AllSensor.Sensor);
+            List<string> copySensor = new List<string>(Investigator.Sensor);
 
             for (int i = 0; i < 6; i++)
             {
@@ -78,8 +109,22 @@ namespace SensorProject
             }
         }
 
+        public override void ConfirmAgentPresence()
+        {
+            if (count == 6)
+            {
+                Console.WriteLine("The agent has been successfully detected at the specified location.");
+
+            }
+        }
+
 
     }
+
+
+
+
+
 
     class OrganizationLeader : IranianAgent
     {
@@ -87,13 +132,22 @@ namespace SensorProject
         protected override void InitializeWeaknesses()
         {
             Random rnd = new Random();
-            List<string> copySensor = new List<string>(AllSensor.Sensor);
+            List<string> copySensor = new List<string>(Investigator.Sensor);
 
             for (int i = 0; i < 8; i++)
             {
                 int index = rnd.Next(copySensor.Count);
                 Weaknesses.Add(copySensor[index]);
                 copySensor.RemoveAt(index);
+            }
+        }
+
+        public override void ConfirmAgentPresence()
+        {
+            if (count == 8)
+            {
+                Console.WriteLine("The agent has been successfully detected at the specified location.");
+
             }
         }
 

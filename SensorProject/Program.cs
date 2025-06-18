@@ -10,6 +10,18 @@ namespace SensorProject
     {
         static void Main(string[] args)
         {
+            SquadLeader s1 = new SquadLeader();
+
+            //foreach (string wk in s1.Weaknesses)
+            //{
+            //    Console.WriteLine(wk);
+            //}
+
+            Investigator.ImplementOneSensor("Audio", s1);
+            Investigator.ImplementOneSensor("Audio", s1);
+            Investigator.ImplementOneSensor("Audio", s1);
+            Investigator.ImplementOneSensor("Audio", s1);
         }
+
     }
 }
